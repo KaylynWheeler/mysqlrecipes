@@ -32,7 +32,7 @@ CREATE TABLE recipe_category (
 	recipe_id INT NOT NULL,
 	category_id INT NOT NULL,
 	FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON DELETE CASCADE,
-	FOREIGN KEY (category_id) REFERENCES category(cateory_id) ON DELETE CASCADE,
+	FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE,
 	UNIQUE KEY (recipe_id,category_id)
 	
 	
@@ -49,13 +49,12 @@ CREATE TABLE step (
 CREATE TABLE ingredient (
 	ingredient_id INT AUTO_INCREMENT NOT NULL,
 	recipe_id INT NOT NULL,
-	unit_id INT NOT NULL,
+	unit_id INT,
 	ingredient_name VARCHAR(64) NOT NULL,
 	instruction VARCHAR(64),
 	ingredient_order INT NOT NULL,
 	amount DECIMAL (7, 2),
 	PRIMARY KEY (ingredient_id),
 	FOREIGN KEY (recipe_id) REFERENCES recipe (recipe_id) ON DELETE CASCADE,
-	FOREIGN KEY (unit_id) REFERENCES unit(unit_id) 
+	FOREIGN KEY (unit_id) REFERENCES unit(unit_id) ON DELETE CASCADE
 	);
-	
